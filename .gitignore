@@ -9,4 +9,4 @@
 
 # Lock file (optional: you may want to commit this)
 .terraform.lock.hcl
-
+.venv/

@@ -1,0 +1,12 @@
+# Terraform local state
+*.tfstate
+*.tfstate.*
+.crash
+*.tfplan
+
+# Local modules and providers
+.terraform/
+
+# Lock file (optional: you may want to commit this)
+.terraform.lock.hcl
+

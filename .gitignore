@@ -10,3 +10,46 @@
 # Lock file (optional: you may want to commit this)
 .terraform.lock.hcl
 .venv/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+terraform.tfvars
+terraform.tfvars.json
+
+# Zip artifacts
+*.zip
+
+# LocalStack
+localstack/
+*.localstack
+
+# Logs
+*.log
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Ignore env and creds
+.env
+.env.*
+.aws/
+

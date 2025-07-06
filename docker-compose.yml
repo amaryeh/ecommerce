@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack-pro
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
+      - SERVICES=lambda,secretsmanager,logs,cloudwatch,s3,apigatewayv2,iam,sts,ec2,elb,rds,cloudfront,sns,wafv2
+      - DATA_DIR=/var/lib/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.localstack:/var/lib/localstack
+    networks:
+      - localnet
+
+networks:
+  localnet:
+    driver: bridge
+

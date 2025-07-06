@@ -53,3 +53,49 @@ Thumbs.db
 .env.*
 .aws/
 
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+.env
+.env.*
+
+# Virtual env
+.venv/
+venv/
+
+# LocalStack state (if any)
+.localstack/
+docker-compose.override.yml
+
+# AWS credentials or token cache (never commit these!)
+.aws/
+*.pem
+*.key
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
+terraform.tfvars
+terraform.tfvars.json
+*.backup
+
+# Node / frontend (if applicable)
+node_modules/
+dist/
+build/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+
+# Throwaway scripts and test files
+*.nodb.works
+*.json
+

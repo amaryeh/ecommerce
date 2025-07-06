@@ -1,12 +1,86 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Welcome to Our Store</title>
-  </head>
-  <body>
-    <h1>Hello from LocalStack!</h1>
-    <p>This site is served from S3 via CloudFront—locally.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bakery Products</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #fff7f0;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #5d3a00;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: 0.2s ease-in-out;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+    }
+    .product-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .category {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      font-size: 1rem;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧁 Our Bakery Selection</h1>
+  <div class="grid" id="product-list"></div>
+
+  <script>
+    const API_BASE = "http://localhost:4566/_aws/execute-api/116dbaa3/dev/_user_request_";
+    const API_KEY = "super-secret-value";
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch(`${API_BASE}/products`, {
+          headers: { "x-api-key": API_KEY }
+        });
+        const data = await res.json();
+        const grid = document.getElementById("product-list");
+
+        data.forEach(p => {
+          const div = document.createElement("div");
+          div.className = "card";
+          div.innerHTML = `
+            <div class="product-name">${p.name}</div>
+            <div class="category">${p.category}</div>
+            <div class="price">$${p.price.toFixed(2)} &mdash; ${p.quantity} available</div>
+          `;
+          grid.appendChild(div);
+        });
+      } catch (err) {
+        console.error("Failed to load products:", err);
+      }
+    }
+
+    fetchProducts();
+  </script>
+</body>
 </html>
 

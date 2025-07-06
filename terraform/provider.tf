@@ -9,7 +9,7 @@ provider "aws" {
   endpoints {
     s3             = "http://localhost:4566"
     lambda         = "http://localhost:4566"
-    apigateway     = "http://localhost:4566"
+    apigatewayv2   = "http://localhost:4566"
     secretsmanager = "http://localhost:4566"
     iam            = "http://localhost:4566"
     sts            = "http://localhost:4566"
@@ -20,5 +20,6 @@ provider "aws" {
     cloudwatch     = "http://localhost:4566"
     logs           = "http://localhost:4566"
     sns            = "http://localhost:4566"
+    wafv2          = "http://localhost:4566"
   }
 }

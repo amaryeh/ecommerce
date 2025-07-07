@@ -107,7 +107,8 @@ Use `terraform output bucket_name` to find your bucket name.
 
 ## 🚦 Operational Notes
 
-- FastAPI handles CORS and API key validation  
+- FastAPI handles CORS and API key validation.
+- - APIs implemented: get products, get product (id), create product, update product, delete product
 - WAF rules are extendable via Terraform module  
 - RDS is mocked in LocalStack behind Dockerized PostgreSQL  
 - IAM enforces scoped service access  
